@@ -1,13 +1,13 @@
 'use strict'
 
-const mc = require('../')
+const adj3d = require('../')
 const test = require('tape')
 
 test('clusters', (t) => {
   const in1 = [ [[1, 1], [1, 0]], [[0, 0], [0, 1]]]
 
   t.deepEqual(
-    mc.find(in1),
+    adj3d.find(in1),
     [
       [
         { x: 0, y: 0, z: 0, value: 1 },
@@ -31,7 +31,7 @@ test('clusters', (t) => {
     ],
   ]
   t.deepEquals(
-    mc.find(in2),
+    adj3d.find(in2),
     [
       [
         { x: 0, y: 0, z: 0, value: 1 },
@@ -81,7 +81,7 @@ test('sort', (t) => {
     ],
   ]
   t.deepEquals(
-    mc.sort(unsorted),
+    adj3d.sort(unsorted),
     sorted,
     'sorts'
   )
