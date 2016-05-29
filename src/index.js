@@ -36,6 +36,9 @@ function nodeSorter(ma, mb) {
     if (ma[axis] < mb[axis]) return -1
     if (ma[axis] > mb[axis]) return 1
   }
+  // generally, 0 means we have two identically addressed
+  // nodes. this is viably an error case, FYI!
+  /* istanbul ignore next */
   return 0
 }
 
