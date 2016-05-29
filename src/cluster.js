@@ -43,7 +43,7 @@ class Cluster {
       coords = node.probe.apply(node, probeRequest)
       if (!coords) return
       addr = `${coords.x}${coords.y}${coords.z}`
-      if (this.knownMass[addr]) return
+      if (this.knownMass.hasOwnProperty(addr)) return
       massNode = new Mass({
         domain: this.domain,
         x: coords.x,

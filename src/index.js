@@ -1,5 +1,10 @@
 'use strict'
 
+/**
+ * @module 3d-adjacency
+ * @description this module outputs sets of cells of which
+ * are adjacent to one another.  see `.find`
+ */
 const Cluster = require('./cluster')
 const Mass = require('./mass')
 
@@ -10,9 +15,16 @@ const Mass = require('./mass')
  * a face (that is, a piece of mass may at most have 6 adjacent
  * neighbors)
  * @param {array[][]} arr
+ * @param {object} opts
+ * @param {function} [opts.isAdjacent] custom function to decide whether cells
+ *                                     are adjacent or not. defaults to `truthy`
+ *                                     values === adjacent. fn gets cell value,
+ *                                     and must return truthy value 
  * @returns {array} e.g. [ [{x:0,y:0,z:1}], [{x:3,y:3,z:3},{x:4,y:3,z:3}]]
  */
-function find(arr) {
+function find(arr, opts) {
+  var opts = opts || {}
+  var isAdjacent = opts.isAdjacent || ((v) => v)
   var knownMass = {} // { 000: 1, 001: 2 } ==> { address: value }
   var clusters = []
   var clust
@@ -21,7 +33,7 @@ function find(arr) {
     for (var y = 0; y < arr[0].length; ++y) {
       for (var z = 0; z < arr[0][0].length; ++z) {
         value = arr[x][y][z]
-        if (value && !knownMass[`${x}${y}${z}`]) {
+        if (isAdjacent(value) && !knownMass.hasOwnProperty(`${x}${y}${z}`)) {
           knownMass[`${x}${y}${z}`] = value
           clust = new Cluster({
             domain: arr,
