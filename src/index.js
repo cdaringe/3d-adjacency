@@ -4,6 +4,7 @@ const Cluster = require('./cluster')
 const Mass = require('./mass')
 
 function find(arr) {
+  var knownMass = {} // { 000: 1, 001: 2 } ==> { address: value }
   var clusters = []
   var clust
   var value
@@ -11,15 +12,13 @@ function find(arr) {
     for (var y = 0; y < arr[0].length; ++y) {
       for (var z = 0; z < arr[0][0].length; ++z) {
         value = arr[x][y][z]
-        if (!Mass.isMasslike(value) || Mass.isMass(value)) {
-          // pass if content is non-massy or we've already
-          // massified the cell
-        } else {
+        if (value && !knownMass[`${x}${y}${z}`]) {
+          knownMass[`${x}${y}${z}`] = value
           clust = new Cluster({
             domain: arr,
-            root: new Mass({ domain: arr, x, y, z, value: value }),
+            knownMass,
+            root: new Mass({ domain: arr, x, y, z, value }),
           })
-          arr[x][y][z] = clust.root
           clust.clusterify()
           clusters.push(clust.serialize())
         }
@@ -29,8 +28,33 @@ function find(arr) {
   return clusters
 }
 
+const SORT_PROPS = ['x', 'y', 'z']
+function nodeSorter(ma, mb) {
+  let axis
+  for (var n in SORT_PROPS) {
+    axis = SORT_PROPS[n]
+    if (ma[axis] < mb[axis]) return -1
+    if (ma[axis] > mb[axis]) return 1
+  }
+  return 0
+}
+
+/**
+ * sort a cluster set, where x, y, z values rank
+ * higher in the sort, respectively
+ * @param {array[]} clusterSet array of clusters
+ * @return {array} sorted clusterSet
+ */
+function sort (clusterSet) {
+  clusterSet = clusterSet.map(clust => clust.sort(nodeSorter))
+  return clusterSet.sort((cla, clb) => {
+    return nodeSorter(cla[0], clb[0])
+  })
+}
+
 module.exports = {
 	find,
+  sort,
 	Cluster,
 	Mass
 }

@@ -38,7 +38,7 @@ class Mass {
         massCandidate = this.domain[this.x][this.y][coords.z]
         break
     }
-    return (Mass.isMasslike(massCandidate) && !Mass.isMass(massCandidate)) ? coords : undefined
+    return massCandidate ? coords : undefined
 
   }
 
@@ -55,26 +55,19 @@ class Mass {
     }
   }
   
-  neighborToMass (massyCoords) {
+  neighborToMass (coords) {
     var mass = new Mass({
       domain: this.domain,
-      x: massyCoords.x,
-      y: massyCoords.y,
-      z: massyCoords.z,
+      x: coords.x,
+      y: coords.y,
+      z: coords.z,
+      value: this.domain[coords.x][coords.y][coords.z]
     })
-    this.domain[massyCoords.x][massyCoords.y][massyCoords.z] = mass
     return mass
   }
   serialize() {
     return { x: this.x, y: this.y, z: this.z }
   }
-}
-
-Mass.isMass = function (v) {
-  return (v && v instanceof Mass)
-}
-Mass.isMasslike = function (v) {
-  return v
 }
 
 module.exports = Mass
