@@ -12,7 +12,7 @@ what you desire is the sets of connected green cells.  graphically, it may look 
 
 <img style="max-height: 125px" src="https://raw.githubusercontent.com/cdaringe/3d-adjacency/master/img/green-clusters.png" />
 
-well, that's exactly what this module does.
+well, that's exactly what this module provides!  yahoo!
 
 ```js
 const adj3d = require('3d-adjacency')
@@ -53,6 +53,7 @@ const groups = adj3d.find(exampleCube)
   ] 
 ]
 */
+```
 
 _"Hey, why is output not matching the same form as the input?"_
 
@@ -64,4 +65,4 @@ Valid question.  Specifically, the output is a set of objects that are coordinat
 
 ## usage
 
-See example above and the [offcial API docs](http://cdaringe.github.io/3d-adjacency)
+See example above and the [offcial API docs](http://www.cdaringe.github.io/3d-adjacency)
