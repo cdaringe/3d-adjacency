@@ -11,10 +11,6 @@ class Mass {
     this.value = conf.value
   }
 
-  print () {
-    console.log(`${this.x} ${this.y} ${this.z}`)
-  }
-
   /**
    * probe for uninstantiated mass
    * @param {number} see X_/Y_/Z_AXIS constants
@@ -51,6 +47,7 @@ class Mass {
       case c.Z_AXIS:
         return {x: this.x, y: this.y, z: this.z + dir}
       default:
+        /* istanbul ignore next */
         throw new ReferenceError(axis + ' axis invalid')
     }
   }
