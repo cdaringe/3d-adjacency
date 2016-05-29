@@ -65,4 +65,4 @@ Valid question.  Specifically, the output is a set of objects that are coordinat
 
 ## usage
 
-See example above and the [offcial API docs](http://www.cdaringe.github.io/3d-adjacency)
+See example above and the [offcial API docs](http://cdaringe.github.io/3d-adjacency)
