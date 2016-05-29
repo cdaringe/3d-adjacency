@@ -39,22 +39,26 @@ class Cluster {
     var massNode
     var addr
     var coords
-    c.CLUSTER_ADJACENCY_DIRS.forEach((probeRequest) => {
+    var probeRequest
+    for (var n in c.CLUSTER_ADJACENCY_DIRS) {
+      probeRequest = c.CLUSTER_ADJACENCY_DIRS[n]
       coords = node.probe.apply(node, probeRequest)
-      if (!coords) return
-      addr = `${coords.x}${coords.y}${coords.z}`
-      if (this.knownMass.hasOwnProperty(addr)) return
-      massNode = new Mass({
-        domain: this.domain,
-        x: coords.x,
-        y: coords.y,
-        z: coords.z,
-        value: this.domain[coords.x][coords.y][coords.z]
-      })
-      this.knownMass[addr] = massNode.value
-      this.massNodes.push(massNode)
-      this._clusterify(massNode)
-    })
+      if (coords) {
+        addr = `${coords.x}${coords.y}${coords.z}`
+        if (!this.knownMass.hasOwnProperty(addr)) {
+          massNode = new Mass({
+            domain: this.domain,
+            x: coords.x,
+            y: coords.y,
+            z: coords.z,
+            value: this.domain[coords.x][coords.y][coords.z]
+          })
+          this.knownMass[addr] = massNode.value
+          this.massNodes.push(massNode)
+          this._clusterify(massNode)
+        }
+      }
+    }
   }
 
   serialize() {
