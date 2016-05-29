@@ -30,7 +30,7 @@ const exampleCube = [ // as shown above
 const groups = adj3d.find(exampleCube)
 // ==>
 /*
-[
+[ // four groups of green blocks
   [
     { x: 0, y: 0, z: 0, value: 1 },
     { x: 1, y: 0, z: 0, value: 1 },
