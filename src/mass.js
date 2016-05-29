@@ -2,6 +2,12 @@
 
 const c = require('./constants')
 
+/**
+ * @class
+ * @property {array[][]} domain
+ * @property {number} x/y/z coordinates
+ * @property {*} value
+ */
 class Mass {
   constructor (conf) {
     this.domain = conf.domain
@@ -38,6 +44,13 @@ class Mass {
 
   }
 
+  /**
+   * convert a probe direction request into a set of coordinates
+   * even if out-of-range
+   * @param {number} axis axis constant
+   * @param {number} dir direction to probe (1/-1 only)
+   * @returns {object} coordinates {x, y, z} form
+   */
   probeRequestToCoords (axis, dir) {
     switch (axis) {
       case c.X_AXIS:
@@ -51,19 +64,14 @@ class Mass {
         throw new ReferenceError(axis + ' axis invalid')
     }
   }
-  
-  neighborToMass (coords) {
-    var mass = new Mass({
-      domain: this.domain,
-      x: coords.x,
-      y: coords.y,
-      z: coords.z,
-      value: this.domain[coords.x][coords.y][coords.z]
-    })
-    return mass
-  }
+
+  /**
+   * convert the Mass node to it's pure address object
+   * representation
+   * @returns {object}
+   */
   serialize() {
-    return { x: this.x, y: this.y, z: this.z }
+    return { x: this.x, y: this.y, z: this.z, value: this.value }
   }
 }
 
