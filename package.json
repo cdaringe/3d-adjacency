@@ -1,7 +1,7 @@
 {
-  "name": "mass-cluster",
+  "name": "3d-adjacency",
   "version": "0.0.0",
-  "description": "",
+  "description": "find clusters of adjacent cells from a 3d array.",
   "main": "src/index.js",
   "directories": {
     "test": "test"
@@ -30,8 +30,8 @@
     "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish",
     "test": "nyc --reporter=lcov --check-coverage --functions=90 --branches=90 node test/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "cdaringe",
+  "license": "MIT",
   "pre-commit": [
     "validate",
     "lint",
