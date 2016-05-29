@@ -19,7 +19,7 @@ class Mass {
 
   /**
    * probe for uninstantiated mass
-   * @param {number} see X_/Y_/Z_AXIS constants
+   * @param {number} axis see X_/Y_/Z_AXIS constants
    * @param {number} 1/-1
    * @returns {object|undefined} probed coords
    */
