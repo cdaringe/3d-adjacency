@@ -1,5 +1,7 @@
 # 3d-adjacency
 
+[ ![Codeship Status for cdaringe/3d-adjacency](https://codeship.com/projects/9480c8b0-0977-0134-9cd2-02b70758e3b0/status?branch=master)](https://codeship.com/projects/155284) [![Coverage Status](https://coveralls.io/repos/github/cdaringe/3d-adjacency/badge.svg?branch=master)](https://coveralls.io/github/cdaringe/3d-adjacency?branch=master) <img src="https://img.shields.io/badge/standardjs-%E2%9C%93-green.svg" />
+
 find "clusters" of adjacent cells from a 3d array.  the array does _not_ need to be cubic, but it does need to be a rectangular prism.
 
 ## example
@@ -8,7 +10,7 @@ suppose you had a three dimensional array, full of 0s and 1s.  0s are white, and
 
 <img style="max-height: 125px" src="https://raw.githubusercontent.com/cdaringe/3d-adjacency/master/img/green-white-array.png" />
 
-what you desire is the sets of connected green cells.  graphically, it may look like: 
+what you desire is the sets of connected green cells.  graphically, it may look like:
 
 <img style="max-height: 125px" src="https://raw.githubusercontent.com/cdaringe/3d-adjacency/master/img/green-clusters.png" />
 
@@ -41,7 +43,7 @@ const groups = adj3d.find(exampleCube)
     { x: 1, y: 0, z: 2, value: 1 },
     { x: 2, y: 0, z: 2, value: 1 }
   ],
-  [ 
+  [
     { x: 0, y: 2, z: 0, value: 1 },
     { x: 1, y: 2, z: 0, value: 1 },
     { x: 2, y: 2, z: 0, value: 1 }
@@ -50,7 +52,7 @@ const groups = adj3d.find(exampleCube)
     { x: 0, y: 2, z: 2, value: 1 },
     { x: 1, y: 2, z: 2, value: 1 },
     { x: 2, y: 2, z: 2, value: 2 }
-  ] 
+  ]
 ]
 */
 ```
@@ -66,3 +68,8 @@ Valid question.  Specifically, the output is a set of objects that are coordinat
 ## usage
 
 See example above and the [offcial API docs](http://cdaringe.github.io/3d-adjacency)
+
+
+### changelog
+
+- 0.0.3 handle much larger arrays. remove recursive calls to keep stack down
