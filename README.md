@@ -72,4 +72,4 @@ See example above and the [offcial API docs](http://cdaringe.github.io/3d-adjace
 
 ### changelog
 
-- 0.0.3 handle much larger arrays. remove recursive calls to keep stack down
+- 0.0.2 handle much larger arrays. remove recursive calls to keep stack down
