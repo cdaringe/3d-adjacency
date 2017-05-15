@@ -1,5 +1,7 @@
 # 3d-adjacency
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/cdaringe/3d-adjacency.svg)](https://greenkeeper.io/)
+
 [ ![Codeship Status for cdaringe/3d-adjacency](https://codeship.com/projects/9480c8b0-0977-0134-9cd2-02b70758e3b0/status?branch=master)](https://codeship.com/projects/155284) [![Coverage Status](https://coveralls.io/repos/github/cdaringe/3d-adjacency/badge.svg?branch=master)](https://coveralls.io/github/cdaringe/3d-adjacency?branch=master) <img src="https://img.shields.io/badge/standardjs-%E2%9C%93-green.svg" />
 
 find "clusters" of adjacent cells from a 3d array.  the array does _not_ need to be cubic, but it does need to be a rectangular prism.
