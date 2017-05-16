@@ -8,12 +8,15 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "biff-city": "^1.0.3",
     "coveralls": "^2.11.9",
     "gh-pages": "^1.0.0",
+    "husky": "^0.13.3",
     "jsdoc": "^3.4.0",
     "minami": "^1.1.1",
+    "npm-run-all": "^4.0.2",
     "nyc": "^10.1.2",
-    "shizam": "0.0.11",
+    "shizam": "0.0.12",
     "standard": "^10.0.0",
     "standard-format": "^2.2.1",
     "tape": "^4.5.1"
@@ -29,7 +32,11 @@
     "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
     "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
     "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish",
-    "test": "nyc --reporter=lcov --check-coverage --functions=90 --branches=90 node test/"
+    "test": "nyc --reporter=lcov --check-coverage --functions=90 --branches=90 node test/",
+    "docs:build": "mkdir -p docs && jsdoc -c .jsdoc.json src/",
+    "docs:clean": "rm -rf docs",
+    "docs:deploy": "gh-pages -d docs",
+    "precommit": "run-s lint"
   },
   "author": "cdaringe",
   "license": "MIT",

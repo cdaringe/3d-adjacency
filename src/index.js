@@ -19,11 +19,11 @@ const Mass = require('./mass')
  * @param {function} [opts.isAdjacent] custom function to decide whether cells
  *                                     are adjacent or not. defaults to `truthy`
  *                                     values === adjacent. fn gets cell value,
- *                                     and must return truthy value 
+ *                                     and must return truthy value
  * @returns {array} e.g. [ [{x:0,y:0,z:1}], [{x:3,y:3,z:3},{x:4,y:3,z:3}]]
  */
-function find(arr, opts) {
-  var opts = opts || {}
+function find (arr, opts) {
+  opts = opts || {}
   var isAdjacent = opts.isAdjacent || ((v) => v)
   var knownMass = {} // { 000: 1, 001: 2 } ==> { address: value }
   var clusters = []
@@ -38,7 +38,7 @@ function find(arr, opts) {
           clust = new Cluster({
             domain: arr,
             knownMass,
-            root: new Mass({ domain: arr, x, y, z, value }),
+            root: new Mass({ domain: arr, x, y, z, value })
           })
           clust.clusterify()
           clusters.push(clust.serialize())
@@ -57,7 +57,7 @@ const SORT_PROPS = ['x', 'y', 'z']
  * @param {object} mb { x, y, z } node
  * @returns {number} -1/0/1
  */
-function nodeSorter(ma, mb) {
+function nodeSorter (ma, mb) {
   let axis
   for (var n in SORT_PROPS) {
     axis = SORT_PROPS[n]
@@ -84,9 +84,9 @@ function sort (clusterSet) {
 }
 
 module.exports = {
-	find,
+  find,
   sort,
   nodeSorter,
-	Cluster,
-	Mass
+  Cluster,
+  Mass
 }

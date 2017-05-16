@@ -41,7 +41,6 @@ class Mass {
         break
     }
     return massCandidate ? coords : undefined
-
   }
 
   /**
@@ -70,7 +69,7 @@ class Mass {
    * representation
    * @returns {object}
    */
-  serialize() {
+  serialize () {
     return { x: this.x, y: this.y, z: this.z, value: this.value }
   }
 }
