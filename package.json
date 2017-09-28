@@ -9,7 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "biff-city": "^1.0.3",
-    "coveralls": "^2.11.9",
+    "coveralls": "^3.0.0",
     "gh-pages": "^1.0.0",
     "husky": "^0.14.0",
     "jsdoc": "^3.4.0",
