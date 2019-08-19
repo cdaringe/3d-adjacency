@@ -17,7 +17,7 @@
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.2",
     "shizam": "0.0.12",
-    "standard": "^11.0.1",
+    "standard": "^14.0.0",
     "standard-format": "^2.2.1",
     "tape": "^4.5.1"
   },
